@@ -25,7 +25,7 @@ class BubbleSort
 
     public function __construct(array $array)
     {
-        $this->sortArr = array_values($array);
+        $this->sortArr = $array;
     }
 
     public function sort()
