@@ -14,6 +14,7 @@ function chooseKing($nums)
     }
 
     foreach ($nums as $key => $value) {
+        // 3可以提炼成参数
         (($key + 1) % 3 != 0) && array_push($nums, $value);
         unset($nums[$key]);
     }
