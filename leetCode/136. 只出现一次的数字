@@ -1,0 +1,16 @@
+class Solution {
+
+    /**
+     * @param Integer[] $nums
+     * @return Integer
+     */
+    function singleNumber($nums) {
+        $res = 0;
+        foreach($nums as $v) {
+            $res = $res ^ $v;
+        }
+        return $res;
+    }
+
+}
+
