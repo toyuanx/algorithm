@@ -1,0 +1,24 @@
+class Solution {
+
+    /**
+     * @param Integer $numRows
+     * @return Integer[][]
+     */
+    function generate($numRows) {
+        if($numRows == 0) return [];
+        if($numRows == 1) return [[1]];
+
+        $initArr[0] = [1];
+        $initArr[1] = [1,1];
+        // 两层循环
+        for($i = 2; $i < $numRows; $i++) {
+            $initArr[$i][] = 1;
+            for($j = 1; $j < $i; $j++) {
+                $initArr[$i][$j] = $initArr[$i - 1][$j - 1] + $initArr[$i - 1][$j];
+            }
+            $initArr[$i][] = 1;
+        }
+
+        return $initArr;
+    }
+}
