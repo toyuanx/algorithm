@@ -1,0 +1,27 @@
+/**
+ * Definition for a binary tree node.
+ * class TreeNode {
+ *     public $val = null;
+ *     public $left = null;
+ *     public $right = null;
+ *     function __construct($value) { $this->val = $value; }
+ * }
+ */
+class Solution {
+
+    /**
+     * @param Integer[] $preorder
+     * @param Integer[] $inorder
+     * @return TreeNode
+     */
+    function buildTree($preorder, $inorder) {
+        if(!$preorder || !$inorder) return; // 前值判断
+        $tree = new TreeNode($preorder[0]); // 前序遍历头节点是根节点
+        
+        $idx = array_search($preorder[0], $inorder);
+        $tree->left = $this->buildTree(array_slice($preorder, 1, $idx), array_slice($inorder, 0, $idx));
+        $tree->right = $this->buildTree(array_slice($preorder, $idx + 1), array_slice($inorder, $idx + 1));
+
+        return $tree;
+    }
+}
