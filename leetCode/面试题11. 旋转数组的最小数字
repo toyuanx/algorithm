@@ -1,0 +1,27 @@
+class Solution {
+
+    /**
+     * @param Integer[] $numbers
+     * @return Integer
+     */
+    function minArray($numbers) {
+        $left = 0;
+        $right = count($numbers) - 1;
+
+        while($left < $right) {
+            $mid = floor(($left + $right) / 2); // 取中间位
+            // 右边大则右边有序数组
+            if($numbers[$mid] < $numbers[$right]) {
+                $right = $mid;
+            } elseif($numbers[$mid] > $numbers[$right]) {
+                // 右边小则
+                $left = $mid + 1;
+            } else {
+                // 去除重复
+                $right--;
+            }
+        }
+
+        return $numbers[$left];
+    }
+}
