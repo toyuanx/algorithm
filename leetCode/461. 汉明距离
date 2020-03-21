@@ -1,0 +1,21 @@
+class Solution {
+
+    /**
+     * @param Integer $x
+     * @param Integer $y
+     * @return Integer
+     */
+    function hammingDistance($x, $y) {
+        // 异或得出结果，再判断结果的二进制中的1的数目（两数不同异或结果为1，相同则为0）
+        $diff = $x ^ $y;
+
+        // 计数器初始化
+        $count = 0; 
+
+        while($diff != 0) {
+            $diff &= $diff - 1; // 按位与，获取二进制1的个数
+            $count++;
+        }
+        return $count;
+    }
+}
