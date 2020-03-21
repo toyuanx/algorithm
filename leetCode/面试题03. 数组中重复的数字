@@ -1,0 +1,17 @@
+class Solution {
+
+    /**
+     * @param Integer[] $nums
+     * @return Integer
+     */
+    function findRepeatNumber($nums) {
+        $tmp = [];
+        foreach($nums as $value) {
+            if(in_array($value, $tmp)) {
+                return $value;
+            }
+
+            $tmp[] = $value;
+        }
+    }
+}
