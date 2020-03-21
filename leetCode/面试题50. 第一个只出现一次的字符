@@ -1,0 +1,26 @@
+class Solution {
+
+    /**
+     * @param String $s
+     * @return String
+     */
+    function firstUniqChar($s) {
+
+        // 哈希思想，key-字符，value-次数
+
+        $len = strlen($s);
+        $hash = [];
+        if($len == 0) return ' ';
+        for($i = 0; $i < $len; $i++) {
+            $hash[$s[$i]] = isset($hash[$s[$i]]) ? $hash[$s[$i]] + 1 : 1;
+        }
+
+        for($i = 0; $i < $len; $i++) {
+            if($hash[$s[$i]] == 1) {
+                return $s[$i];
+            }
+        }
+
+        return ' ';
+    }
+}
