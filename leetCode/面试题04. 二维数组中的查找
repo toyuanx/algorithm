@@ -1,0 +1,31 @@
+class Solution {
+
+    /**
+     * @param Integer[][] $matrix
+     * @param Integer $target
+     * @return Boolean
+     */
+    function findNumberIn2DArray($matrix, $target) {
+        $rows = count($matrix);
+        $cols = count($matrix[0]);
+
+        // 左下角开始
+        $i = $rows - 1;
+        $j = 0;
+
+        while($i >= 0 && $j <= $cols - 1) {
+            if($target < $matrix[$i][$j]) {
+                // 小于往上
+                $i--;
+            } elseif ($target > $matrix[$i][$j]) {
+                // 大于往右
+                $j++;
+            } else {
+                // 等于返回成功
+                echo "目标位置：$i, $j";
+                return true;
+            }
+        }
+        return false;
+    }
+}
