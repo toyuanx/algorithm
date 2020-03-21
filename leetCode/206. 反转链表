@@ -1,0 +1,40 @@
+/**
+ * Definition for a singly-linked list.
+ * class ListNode {
+ *     public $val = 0;
+ *     public $next = null;
+ *     function __construct($val) { $this->val = $val; }
+ * }
+ */
+class Solution {
+
+    /**
+     * @param ListNode $head
+     * @return ListNode
+     */
+    function reverseList($head) {
+        // 迭代
+//         $val = null;
+//         $current = $head;
+        
+//         while($current) {
+//             $temp = $current->next;
+//             $current->next = $val;
+//             $val = $current;
+//             $current = $temp;
+//         }
+        
+//         return $val;
+        
+
+        //递归
+        if(!$head || !$head->next) return $head;
+        
+        $list = $this->reverseList($head->next);
+        
+        $head->next->next = $head;
+        $head->next = null;
+        return $list;   
+        
+    }
+}
