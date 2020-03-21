@@ -1,0 +1,11 @@
+class Solution {
+
+    /**
+     * @param Integer $n
+     * @return Boolean
+     */
+    function isPowerOfTwo($n) {
+        //var_dump(($n & ($n - 1) === 0));die;
+        return $n > 0 && (empty($n & ($n - 1)));
+    }
+}
