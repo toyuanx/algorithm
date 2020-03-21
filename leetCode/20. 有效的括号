@@ -1,0 +1,38 @@
+class Solution {
+
+    /**
+     * @param String $s
+     * @return Boolean
+     */
+    function isValid($s) {
+    
+        $lenth = strlen($s);
+        if ($lenth % 2 != 0) return false; // 不是偶数先排除
+        $keyArray = [
+            ')' => '(',
+            '}' => '{',
+            ']' => '[',
+        ];
+        $temp = [];
+        for ($i = 0; $i < strlen($s); $i++) {
+            $char = $s[$i];
+            switch ($char) {
+                case '(':
+                case '{':
+                case '[':
+                    array_push($temp, $char);
+                    break;
+                case ')':
+                case '}':
+                case ']':
+                    if (empty($temp) || array_pop($temp) != $keyArray[$char]) {
+                        return false;
+                    }
+                    break;
+            }
+            // print_r($temp);
+        }
+
+        return $temp ? false : true;
+    }
+}
