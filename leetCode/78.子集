@@ -1,0 +1,21 @@
+class Solution {
+
+    /**
+     * @param Integer[] $nums
+     * @return Integer[][]
+     */
+    function subsets($nums) {
+        $res = [];
+        $this->back(0, [], $nums, $res);
+        return $res;
+    }
+
+    function back($i, $temp, $nums, &$res) {
+        $res[] = $temp;
+        for ($j = $i; $j < count($nums); $j++) {
+            array_push($temp, $nums[$j]);
+            $this->back($j + 1, $temp, $nums, $res);
+            array_pop($temp);
+        }
+    }
+}
