@@ -1,0 +1,28 @@
+class Solution {
+
+    /**
+     * @param Integer[] $nums
+     * @return Integer
+     */
+    function maxSubArray($nums) {
+
+        // $sum = 0; // 当前位置最大连续和
+        // $res = $nums[0]; // 返回结果
+        // if(count($nums) == 1) return $res;
+
+        // foreach($nums as $value) {
+        //     $sum = max($sum + $value, $value);
+        //     $res = max($res, $sum);
+        // }
+
+        // return $res;
+
+        // 求最值可以用动态规划思想
+        $dp[0] = $nums[0];
+        foreach($nums as $i => $num) {
+            $dp[$i] = max($num, $num + $dp[$i - 1]);
+        }
+
+        return max($dp);
+    }
+}
