@@ -1,0 +1,24 @@
+class Solution {
+
+    /**
+     * @param String $s
+     * @return Integer
+     */
+    function lengthOfLongestSubstring($s) {
+        $l = strlen($s); //获取字符串总长度
+        $len = 0;   //记录长度
+        $find = ''; //保存截取字符串
+
+        for($i=0;$i<$l;$i++){
+            $res = strpos($find,$s[$i]); // 查找$find中是否存在
+            $find.=$s[$i];
+            if($res !== false){
+                $find = substr($find,$res+1);
+            }
+            var_dump($find);
+
+            $len = strlen($find) > $len ? strlen($find) : $len;
+        }
+        return $len;    
+    }
+}
