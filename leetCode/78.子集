@@ -19,3 +19,26 @@ class Solution {
         }
     }
 }
+
+
+// 方法2
+
+class Solution {
+
+    /**
+     * @param Integer[] $nums
+     * @return Integer[][]
+     */
+    function subsets($nums) {
+        $res = [[]];
+        foreach($nums as $v) {
+            // 每遇到一个数，就给res数组里面的集合添加上这个数，并形成新子集添加到res数组中
+            foreach($res as $val) {
+                $val[] = $v;
+                $res[] = $val;
+            }
+        }
+        return $res;
+    }
+
+}
